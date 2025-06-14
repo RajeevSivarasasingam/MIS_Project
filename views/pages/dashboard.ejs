@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - University Event Management</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, <%= user.name %> 👋</h1>
+    <p>You are logged in as: <strong><%= user.role %></strong></p>
+
+    <% if (user.role === 'admin') { %>
+      <p><a href="/events">Manage All Events</a></p>
+      <p><a href="/users">Manage Users</a></p>
+    <% } else if (user.role === 'organizer') { %>
+      <p><a href="/events/create">Create Event</a></p>
+      <p><a href="/events">View My Events</a></p>
+    <% } else { %>
+      <p><a href="/events">View Events</a></p>
+      <p><a href="/my-registrations">My Registrations</a></p>
+    <% } %>
+
+    <p><a href="/logout">Logout</a></p>
+  </div>
+</body>
+</html>
+
+<!-- This is the dashboard page for logged-in users. It displays different options based on the user's role. -->
+<!-- The admin can manage all events and users, the organizer can create and view their events, and students can view events and their registrations. -->

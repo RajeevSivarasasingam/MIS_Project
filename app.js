@@ -33,8 +33,12 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/', require('./routes/auth'));
+const authRoutes = require('./routes/auth');
+console.log('authRoutes:', authRoutes); // <== ADD THIS LINE
+app.use('/', authRoutes);
+
+// Event Routes
 app.use('/events', require('./routes/event'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3003;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
